@@ -6,9 +6,9 @@ const BaseButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  border-radius: 5px;
-  display: flex;
-  width: max-content;
+  border-radius: 12px;
+  width: 100%;
+  min-height: 50px;
 `;
 
 // Botões estilizados que estendem o BaseButton
@@ -25,9 +25,9 @@ export const ButtonSC = {
 
 // Definindo o estilo do título
 export const ButtonTitle = styled.Text`
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.font.medium};
+  font-family: ${({ theme }) => theme.font.fontFamilySemiBold};
 `;
 
 // Definindo o componente de ícone (opcional)

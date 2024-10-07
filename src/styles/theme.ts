@@ -9,8 +9,12 @@ export const theme = {
   },
   font: {
     small: "14px",
-    medium: "18px",
+    medium: "16px",
+    large: "26px",
     light: Colors.white,
     dark: Colors.zinc950,
+    fontFamily: "Geist-Regular",
+    fontFamilyBold: "Geist-Bold",
+    fontFamilySemiBold: "Geist-SemiBold",
   },
 };

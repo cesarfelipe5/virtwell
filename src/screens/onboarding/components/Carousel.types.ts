@@ -7,6 +7,7 @@ export interface DotProps {
 
 export interface CarouselItem {
   title: string;
+  subTitle: string;
   svg: FC<SvgProps>;
 }
 

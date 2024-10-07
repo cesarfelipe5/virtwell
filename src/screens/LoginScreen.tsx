@@ -21,6 +21,7 @@ export const LoginScreen = () => {
       }}
     >
       <Text style={{ fontFamily: "Geist-Regular" }}>Login Screen</Text>
+
       <Button title="Login" onPress={handleLogin} />
     </View>
   );

@@ -9,15 +9,21 @@ import { CarouselItem } from "./components/Carousel.types";
 export const Onboarding = () => {
   const carouselItems: CarouselItem[] = [
     {
-      title: "Slide 1",
+      title: "Descubra o Universo Virtual",
+      subTitle:
+        "Descubra instantaneamente problemas mecânicos e eletrônicos em seu veículo com uma varredura completa.",
       svg: FirstSvg,
     },
     {
-      title: "SecondSvg",
+      title: "Realidade Virtual na Educação",
+      subTitle:
+        "A realidade virtual transforma a educação, proporcionando experiências interativas que estimulam o aprendizado.",
       svg: SecondSvg,
     },
     {
-      title: "Third",
+      title: "Inicie sua Jornada Imersiva",
+      subTitle:
+        "Explore novos horizontes, enfrente desafios inovadores e mergulhe em experiências que vão além do que você imagina.",
       svg: ThirdSvg,
     },
   ];
