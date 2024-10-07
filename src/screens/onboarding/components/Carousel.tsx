@@ -84,7 +84,6 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({ items }) => {
               <Dot key={index} isActive={index === activeIndex} />
             ))}
           </ContainerDot>
-
           <ContainerTitle>
             <Title>{items[activeIndex].title}</Title>
           </ContainerTitle>

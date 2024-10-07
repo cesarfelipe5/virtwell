@@ -18,6 +18,7 @@ export const ContainerBottom = styled.View`
 export const ContainerDescription = styled.View`
   gap: 24px;
   flex: 1;
+  justify-content: center;
 `;
 
 export const Dot = styled.View<DotProps>`
