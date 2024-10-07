@@ -6,7 +6,13 @@
     "module": "esnext", // ou 'commonjs'
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": ["../assets/*"],
+      "@colors/*": ["styles/colors/*"],
+      "@components/*": ["components/*"]
+    }
   },
   "exclude": [
     "node_modules",

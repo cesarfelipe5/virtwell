@@ -8,10 +8,12 @@ import { RootState } from "../redux/store";
 import HomeScreen from "../screens/HomeScreen";
 import { LoginScreen } from "../screens/LoginScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import { Onboarding } from "../screens/onboarding";
 
 // Tipos para as rotas
 type AuthStackParamList = {
   Login: undefined;
+  Onboarding: undefined;
 };
 
 type AppTabsParamList = {
@@ -25,6 +27,7 @@ const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 const AuthNavigator = () => {
   return (
     <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name="Onboarding" component={Onboarding} />
       <AuthStack.Screen name="Login" component={LoginScreen} />
     </AuthStack.Navigator>
   );

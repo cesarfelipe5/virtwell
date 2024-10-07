@@ -20,7 +20,7 @@ export const LoginScreen = () => {
         backgroundColor: "red",
       }}
     >
-      <Text>Login Screen</Text>
+      <Text style={{ fontFamily: "Geist-Regular" }}>Login Screen</Text>
       <Button title="Login" onPress={handleLogin} />
     </View>
   );

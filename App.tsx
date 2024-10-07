@@ -1,28 +1,54 @@
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import { useEffect, useState } from "react";
+import "react-native-reanimated";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+import { Container } from "./App.styles";
 import { Navigation } from "./src/navigation/RootNavigator";
 import { store } from "./src/redux/store";
+import { theme } from "./src/styles/theme";
 
 if (__DEV__) {
   import("./ReactotronConfig").then(() => console.log("Reactotron Configured"));
 }
 
+// Impede o Splash Screen de ocultar automaticamente
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Geist-Regular": require("./assets/fonts/Geist-Regular.ttf"),
+  });
+
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      if (fontsLoaded) {
+        // Quando as fontes estiverem carregadas, esconda o splash screen
+        await SplashScreen.hideAsync();
+
+        setAppIsReady(true);
+      }
+    }
+    prepare();
+  }, [fontsLoaded]);
+
+  if (!appIsReady) {
+    return null; // Mantenha o Splash Screen visível
+  }
+
   return (
     <Provider store={store}>
-      <Navigation />
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Navigation />
+        </Container>
 
-      <StatusBar style="auto" />
+        <StatusBar style="light" />
+      </ThemeProvider>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

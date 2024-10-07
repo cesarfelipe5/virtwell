@@ -15,5 +15,11 @@ module.exports = (() => {
     sourceExts: [...resolver.sourceExts, "svg"],
   };
 
+  config.resolver.alias = {
+    "@assets": "./assets",
+    "@colors": "./src/styles/colors",
+    "@components": "./src/components",
+  };
+
   return config;
 })();
