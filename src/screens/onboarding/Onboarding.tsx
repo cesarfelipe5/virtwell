@@ -1,12 +1,15 @@
 import FirstSvg from "@assets/man/first.svg";
 import SecondSvg from "@assets/man/second.svg";
 import ThirdSvg from "@assets/man/third.svg";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Container } from "./Onboarding.styles";
 import { CustomCarousel } from "./components";
 import { CarouselItem } from "./components/Carousel.types";
 
 export const Onboarding = () => {
+  const { navigate } = useNavigation();
+
   const carouselItems: CarouselItem[] = [
     {
       title: "Descubra o Universo Virtual",
@@ -28,9 +31,13 @@ export const Onboarding = () => {
     },
   ];
 
+  const onFinish = () => {
+    navigate("Login" as never);
+  };
+
   return (
     <Container>
-      <CustomCarousel items={carouselItems} />
+      <CustomCarousel items={carouselItems} onFinish={onFinish} />
     </Container>
   );
 };

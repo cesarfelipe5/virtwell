@@ -4,31 +4,24 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useSelector } from "react-redux";
+import { AuthNavigator } from "screens/auth";
 import { RootState } from "../redux/store";
 import HomeScreen from "../screens/HomeScreen";
-import { LoginScreen } from "../screens/LoginScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { Onboarding } from "../screens/onboarding";
-
-// Tipos para as rotas
-type AuthStackParamList = {
-  Login: undefined;
-  Onboarding: undefined;
-};
-
-type AppTabsParamList = {
-  Home: undefined;
-  Profile: undefined;
-};
+import { AppTabsParamList, AuthStackParamList } from "./RootNavigator.types";
 
 // Navegação de autenticação (Login)
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 
-const AuthNavigator = () => {
+const UnauthenticatedNavigator = () => {
   return (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+    <AuthStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Onboarding"
+    >
       <AuthStack.Screen name="Onboarding" component={Onboarding} />
-      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen name="Login" component={AuthNavigator} />
     </AuthStack.Navigator>
   );
 };
@@ -36,13 +29,13 @@ const AuthNavigator = () => {
 // Navegação de abas (após login)
 const Tab = createBottomTabNavigator<AppTabsParamList>();
 
-const AppTabsNavigator = () => {
+const AuthenticatedNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+          let iconName: string;
 
           if (route.name === "Home") {
             iconName = focused
@@ -76,7 +69,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer>
-      {isLoggedIn ? <AppTabsNavigator /> : <AuthNavigator />}
+      {isLoggedIn ? <AuthenticatedNavigator /> : <UnauthenticatedNavigator />}
     </NavigationContainer>
   );
 };

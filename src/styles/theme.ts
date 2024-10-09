@@ -7,14 +7,19 @@ export const theme = {
     backgroundLight: Colors.white,
     white: Colors.white,
   },
-  font: {
-    small: "14px",
-    medium: "16px",
-    large: "26px",
+  fonts: {
+    font14: "14px",
+    font16: "16px",
+    font18: "18px",
+    fonst26: "26px",
+    font32: "32px",
+    lineHeight18: "18px",
+    lineHeight28: "28px",
     light: Colors.white,
     dark: Colors.zinc950,
     fontFamily: "Geist-Regular",
     fontFamilyBold: "Geist-Bold",
     fontFamilySemiBold: "Geist-SemiBold",
+    fontFamilyMedium: "Geist-Medium",
   },
 };

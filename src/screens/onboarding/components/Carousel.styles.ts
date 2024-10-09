@@ -51,14 +51,15 @@ export const ContainerTitle = styled.View``;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.white};
-  font-family: ${({ theme }) => theme.font.fontFamilyBold};
-  font-size: ${({ theme }) => theme.font.large};
+  font-family: ${({ theme }) => theme.fonts.fontFamilyBold};
+  font-size: ${({ theme }) => theme.fonts.font26};
 `;
 
 export const ContainerSubTitle = styled.View``;
 
 export const SubTitle = styled.Text`
   color: ${({ theme }) => theme.colors.white};
-  font-family: ${({ theme }) => theme.font.fontFamily};
-  font-size: ${({ theme }) => theme.font.small};
+  font-family: ${({ theme }) => theme.fonts.fontFamily};
+  font-size: ${({ theme }) => theme.fonts.font14};
+  line-height: ${({ theme }) => theme.fonts.lineHeight18};
 `;

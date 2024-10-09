@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
+import { TitleProps } from "./Button.types";
 
-// Definindo o estilo base do botão usando TouchableOpacity
 const BaseButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -9,9 +9,9 @@ const BaseButton = styled.TouchableOpacity`
   border-radius: 12px;
   width: 100%;
   min-height: 50px;
+  gap: 10px;
 `;
 
-// Botões estilizados que estendem o BaseButton
 export const ButtonSC = {
   dark: styled(BaseButton)`
     background-color: ${({ theme }) => theme.colors.primary};
@@ -23,14 +23,10 @@ export const ButtonSC = {
   `,
 };
 
-// Definindo o estilo do título
-export const ButtonTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.font.medium};
-  font-family: ${({ theme }) => theme.font.fontFamilySemiBold};
+export const ButtonTitle = styled.Text<TitleProps>`
+  color: ${({ theme, islight }) => theme.colors[islight ? "dark" : "white"]};
+  font-size: ${({ theme }) => theme.fonts.font16};
+  font-family: ${({ theme }) => theme.fonts.fontFamilySemiBold};
 `;
 
-// Definindo o componente de ícone (opcional)
-export const IconWrapper = styled.View`
-  margin-left: 10px;
-`;
+export const IconWrapper = styled.View``;

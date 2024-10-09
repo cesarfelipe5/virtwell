@@ -22,13 +22,22 @@ const { width, height } = Dimensions.get("window");
 const adjustedWidth = width - 40;
 const adjustedHeight = height / 2 - 20;
 
-export const CustomCarousel: React.FC<CustomCarouselProps> = ({ items }) => {
+export const CustomCarousel: React.FC<CustomCarouselProps> = ({
+  items,
+  onFinish,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(5);
   const carouselRef = useRef<ICarouselInstance>(null);
 
   const goToNextPage = () => {
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    if (activeIndex === items.length - 1) {
+      onFinish();
+
+      return;
+    }
+
+    const nextIndex = activeIndex + 1;
 
     setActiveIndex(nextIndex);
 
@@ -84,6 +93,7 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({ items }) => {
               <Dot key={index} isActive={index === activeIndex} />
             ))}
           </ContainerDot>
+
           <ContainerTitle>
             <Title>{items[activeIndex].title}</Title>
           </ContainerTitle>

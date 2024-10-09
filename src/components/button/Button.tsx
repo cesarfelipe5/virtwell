@@ -1,15 +1,6 @@
-// import { FC } from "react";
-// import { Button as ButtonComponent } from "./Button.styles";
-// import { ButtonProps } from "./Button.types";
-
-// export const Button: FC = ({ title, onPress, isLight }: ButtonProps) => {
-//   const Component = isLight ? ButtonComponent.light : ButtonComponent.dark;
-
-//   return <Component title={title} onPress={onPress} />;
-// };
-
 import { Ionicons } from "@expo/vector-icons";
 import React, { FC } from "react";
+import { useTheme } from "styled-components";
 import { ButtonSC, ButtonTitle, IconWrapper } from "./Button.styles";
 import { ButtonProps } from "./Button.types";
 
@@ -18,18 +9,26 @@ export const Button: FC<ButtonProps> = ({
   onPress,
   iconName,
   isLight,
+  iconRight = true,
 }) => {
+  const theme = useTheme();
+
   const ButtonContainer = isLight ? ButtonSC.light : ButtonSC.dark;
+  const color = theme.colors[isLight ? "dark" : "light"];
+
+  const RenderIcon = () => (
+    <IconWrapper>
+      <Ionicons name={iconName} size={20} color={color} />
+    </IconWrapper>
+  );
 
   return (
     <ButtonContainer onPress={onPress}>
-      <ButtonTitle>{title}</ButtonTitle>
+      {!iconRight && <RenderIcon />}
 
-      {iconName && (
-        <IconWrapper>
-          <Ionicons name={iconName} size={20} color="#fff" />
-        </IconWrapper>
-      )}
+      <ButtonTitle islight={isLight}>{title}</ButtonTitle>
+
+      {iconRight && <RenderIcon />}
     </ButtonContainer>
   );
 };

@@ -13,4 +13,5 @@ export interface CarouselItem {
 
 export interface CustomCarouselProps {
   items: CarouselItem[];
+  onFinish: () => void;
 }
