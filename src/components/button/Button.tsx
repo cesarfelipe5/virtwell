@@ -14,13 +14,15 @@ export const Button: FC<ButtonProps> = ({
   const theme = useTheme();
 
   const ButtonContainer = isLight ? ButtonSC.light : ButtonSC.dark;
-  const color = theme.colors[isLight ? "dark" : "light"];
+  const color = theme.colors[isLight ? "dark" : "white"];
 
-  const RenderIcon = () => (
-    <IconWrapper>
-      <Ionicons name={iconName} size={20} color={color} />
-    </IconWrapper>
-  );
+  const RenderIcon = () => {
+    return (
+      <IconWrapper>
+        <Ionicons name={iconName} size={20} color={color} />
+      </IconWrapper>
+    );
+  };
 
   return (
     <ButtonContainer onPress={onPress}>

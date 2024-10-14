@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { TitleProps } from "./Button.types";
 
-const BaseButton = styled.TouchableOpacity`
+const BaseButton = styled.Pressable`
   flex-direction: row;
   align-items: center;
   justify-content: center;

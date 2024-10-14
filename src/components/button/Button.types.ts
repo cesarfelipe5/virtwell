@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacityProps } from "react-native";
+import { PressableProps } from "react-native";
 
-export interface ButtonProps extends TouchableOpacityProps {
+export interface ButtonProps extends PressableProps {
   title: string;
   isLight?: boolean;
   iconRight?: boolean;

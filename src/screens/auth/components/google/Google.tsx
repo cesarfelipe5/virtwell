@@ -6,6 +6,7 @@ import { CryptoDigestAlgorithm, digestStringAsync } from "expo-crypto";
 import * as WebBrowser from "expo-web-browser";
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
+import { Container } from "./Google.styles";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -26,7 +27,9 @@ export const Google = () => {
         CryptoDigestAlgorithm.SHA256,
         JSON.stringify(user)
       );
+
       await AsyncStorage.setItem("@userInfo", userDigest); // Armazena hash das informações do usuário
+
       setUserInfo(user);
     } catch (e) {
       console.log("Erro ao armazenar informações do usuário", e);
@@ -36,6 +39,7 @@ export const Google = () => {
   // Função que busca as informações do usuário
   const getUserInfo = async () => {
     const user = await AsyncStorage.getItem("@userInfo");
+
     if (user) {
       setUserInfo(user);
     }
@@ -59,19 +63,22 @@ export const Google = () => {
     });
 
     const user = await response.json();
+
     await storeUserInfo(user);
   };
 
   const handleLogout = async () => {
     await AsyncStorage.removeItem("@userInfo");
+
     setUserInfo(null);
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Container>
       {userInfo ? (
         <View>
           <Text>Bem-vindo, {userInfo.name}</Text>
+
           <Button title="Logout" onPress={handleLogout} />
         </View>
       ) : (
@@ -86,6 +93,6 @@ export const Google = () => {
           }}
         />
       )}
-    </View>
+    </Container>
   );
 };

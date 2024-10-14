@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  flex: 1;
   gap: 16px;
+  margin-bottom: 64px;
 `;
 
 export const ContainerTitle = styled.View`
@@ -11,7 +11,7 @@ export const ContainerTitle = styled.View`
   gap: 12px;
 `;
 
-export const ContainerBack = styled.TouchableOpacity`
+export const ContainerBack = styled.Pressable`
   flex-direction: row;
   align-items: center;
   gap: 8px;
