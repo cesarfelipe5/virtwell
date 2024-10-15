@@ -1,8 +1,9 @@
-import { TextInput as RNTextInput } from "react-native";
+import { TextInput } from "react-native";
 import styled from "styled-components/native";
 
 export const InputContainer = styled.View`
-  /* margin-bottom: 16px; */
+  margin-bottom: 16px;
+  flex: 1;
 `;
 
 export const LabelContainer = styled.View`
@@ -25,7 +26,7 @@ export const RightLabel = styled.Text`
   color: ${({ theme }) => theme.colors.zinc500};
 `;
 
-export const StyledInput = styled(RNTextInput)`
+export const StyledInput = styled(TextInput)`
   font-family: ${({ theme }) => theme.fonts.fontFamily};
   background-color: ${({ theme }) => theme.colors.zinc900};
   border-radius: 12px;

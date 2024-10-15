@@ -5,8 +5,8 @@ const BaseText = styled.Text`
 `;
 
 export const Container = styled.View`
+  margin-top: 40px;
   flex-direction: row;
-  flex: 1;
   justify-content: center;
 `;
 

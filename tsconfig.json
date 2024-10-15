@@ -11,7 +11,8 @@
     "paths": {
       "@assets/*": ["../assets/*"],
       "@colors/*": ["styles/colors/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "exclude": [

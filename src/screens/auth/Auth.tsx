@@ -1,7 +1,7 @@
 import { Button } from "@components/button";
 import { Input } from "@components/input";
 import { useRef } from "react";
-import { Dimensions, Platform, TextInput } from "react-native";
+import { Dimensions, TextInput } from "react-native";
 import { Container, StyledKeyboardAvoidingView } from "./Auth.styles";
 import { Google } from "./components/google";
 import { HaventRegistered } from "./components/haventRegistered";
@@ -15,18 +15,15 @@ export const Auth = () => {
   const inputRef2 = useRef<TextInput>(null);
 
   const handleContinue = () => {
-    console.log("Loginnnnnnnnnnnnn");
+    console.log("handleContinue");
   };
 
   const handleForgotPassword = () => {
-    () => console.log("Esqueceu sua senha");
+    () => console.log("handleForgotPassword");
   };
 
   return (
-    <StyledKeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={height * 0.1}
-    >
+    <StyledKeyboardAvoidingView>
       <Container>
         <Header isLogin title="Entrar" />
 
@@ -43,7 +40,6 @@ export const Auth = () => {
           onSubmitEditing={() => {
             inputRef2.current?.focus();
           }}
-          containerStyle={{ marginBottom: 16 }}
         />
 
         <Input
@@ -53,13 +49,8 @@ export const Auth = () => {
           ref={inputRef2}
           returnKeyType="done"
           placeholder="***********"
+          secureTextEntry
           onSubmitEditing={handleContinue}
-          keyboardType={
-            Platform.OS === "android"
-              ? "visible-password"
-              : "numbers-and-punctuation"
-          }
-          containerStyle={{ marginBottom: 16 }}
         />
 
         <Button

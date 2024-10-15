@@ -13,7 +13,11 @@ import {
 } from "./Header.styles";
 import { HeaderProps } from "./Header.types";
 
-export const Header = ({ isLogin, title, onPressBack }: HeaderProps) => {
+export const Header = ({
+  title,
+  onPressBack,
+  isLogin = false,
+}: HeaderProps) => {
   const theme = useTheme();
 
   return (
@@ -33,7 +37,7 @@ export const Header = ({ isLogin, title, onPressBack }: HeaderProps) => {
       )}
 
       <ContainerSignIn>
-        <TitleSignIn>{title} </TitleSignIn>
+        <TitleSignIn>{title}</TitleSignIn>
 
         <BottomTitleSignIn />
       </ContainerSignIn>

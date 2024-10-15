@@ -32,7 +32,7 @@ export const Onboarding = () => {
   ];
 
   const onFinish = () => {
-    navigate("Login" as never);
+    navigate("AuthNavigator" as never);
   };
 
   return (

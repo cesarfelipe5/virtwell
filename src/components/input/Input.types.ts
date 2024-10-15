@@ -5,4 +5,6 @@ export interface InputProps extends TextInputProps {
   rightLabel?: string;
   onPressRightLabel?: () => void;
   containerStyle?: ViewStyle;
+  required?: boolean;
+  mask?: ({ value }) => string;
 }

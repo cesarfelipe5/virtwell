@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { TextInput } from "react-native";
 import { useTheme } from "styled-components";
 import {
@@ -12,13 +12,44 @@ import {
 import { InputProps } from "./Input.types";
 
 export default forwardRef<TextInput, InputProps>(
-  ({ label, rightLabel, containerStyle, onPressRightLabel, ...props }, ref) => {
+  (
+    {
+      value,
+      label,
+      rightLabel,
+      containerStyle,
+      onPressRightLabel,
+      required,
+      onChangeText,
+      mask,
+      ...props
+    },
+    ref
+  ) => {
     const theme = useTheme();
+
+    const [valueInput, setValueInput] = useState("");
+
+    const handleChangeText = (text: string) => {
+      const maskedValue = mask ? mask({ value: text }) : text;
+
+      setValueInput(maskedValue);
+
+      onChangeText && onChangeText(maskedValue);
+    };
+
+    useEffect(() => {
+      if (value) {
+        setValueInput(value);
+      }
+    }, []);
 
     return (
       <InputContainer style={containerStyle}>
         <LabelContainer>
-          <Label>{label}</Label>
+          <Label>
+            {label} {!!required && "*"}
+          </Label>
 
           <RightLabelContainer onPress={onPressRightLabel}>
             <RightLabel>{rightLabel}</RightLabel>
@@ -26,6 +57,8 @@ export default forwardRef<TextInput, InputProps>(
         </LabelContainer>
 
         <StyledInput
+          value={valueInput}
+          onChangeText={handleChangeText}
           placeholder="Digite..."
           placeholderTextColor={theme.colors.zinc500}
           ref={ref}

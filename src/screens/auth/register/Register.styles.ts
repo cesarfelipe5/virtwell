@@ -24,4 +24,5 @@ export const Container = styled.ScrollView.attrs<ScrollViewProps>({
   },
 })`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.background};
 `;

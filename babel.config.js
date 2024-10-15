@@ -12,6 +12,7 @@ module.exports = function (api) {
             "@assets": "./assets",
             "@colors": "./src/styles/colors",
             "@components": "./src/components",
+            "@utils": "./src/utils",
           },
         },
       ],

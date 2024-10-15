@@ -24,4 +24,18 @@ export const Container = styled.ScrollView.attrs<ScrollViewProps>({
   },
 })`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const ContainerRow = styled.View`
+  flex-direction: row;
+  gap: 16px;
+`;
+
+export const Container2parts = styled.View`
+  flex: 2;
+`;
+
+export const Container1part = styled.View`
+  flex: 1;
 `;

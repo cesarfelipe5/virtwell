@@ -21,7 +21,7 @@ const UnauthenticatedNavigator = () => {
       initialRouteName="Onboarding"
     >
       <AuthStack.Screen name="Onboarding" component={Onboarding} />
-      <AuthStack.Screen name="Login" component={AuthNavigator} />
+      <AuthStack.Screen name="AuthNavigator" component={AuthNavigator} />
     </AuthStack.Navigator>
   );
 };

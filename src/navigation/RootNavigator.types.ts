@@ -1,6 +1,6 @@
 // Tipos para as rotas
 export type AuthStackParamList = {
-  Login: undefined;
+  AuthNavigator: undefined;
   Onboarding: undefined;
 };
 

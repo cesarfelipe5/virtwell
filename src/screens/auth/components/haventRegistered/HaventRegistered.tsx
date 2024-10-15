@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import {
   Container,
   TitleHaventRegistred,
@@ -5,9 +6,9 @@ import {
 } from "./HaventRegistered.styles";
 
 export const HaventRegistered = () => {
-  const handleRegister = () => {
-    console.log("handleRegister");
-  };
+  const { navigate } = useNavigation();
+
+  const handleRegister = () => navigate("RegisterNavigator" as never);
 
   return (
     <Container>

@@ -19,6 +19,7 @@ module.exports = (() => {
     "@assets": "./assets",
     "@colors": "./src/styles/colors",
     "@components": "./src/components",
+    "@utils": "./src/utils",
   };
 
   return config;

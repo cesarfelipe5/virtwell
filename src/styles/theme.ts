@@ -9,6 +9,7 @@ export const theme = {
     dark: Colors.zinc950,
     zinc900: Colors.zinc900,
     zinc700: Colors.zinc700,
+    zinc600: Colors.zinc600,
     zinc500: Colors.zinc500,
     zinc400: Colors.zinc400,
     zinc300: Colors.zinc300,
