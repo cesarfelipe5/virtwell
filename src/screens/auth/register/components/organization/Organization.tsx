@@ -24,7 +24,7 @@ export const Organization = () => {
   const handleOnPressBack = () => {
     console.log("Organization handleOnPressBack");
 
-    navigation.canGoBack ? navigation.goBack() : null;
+    navigation.canGoBack() ? navigation.goBack() : null;
   };
 
   const onSubmitEditingByIndex =
@@ -36,7 +36,7 @@ export const Organization = () => {
   const handleContinue = () => {
     console.log("Organization handleContinue");
 
-    // navigation.navigate("Use" as never);
+    navigation.navigate("Signature" as never);
   };
 
   return (

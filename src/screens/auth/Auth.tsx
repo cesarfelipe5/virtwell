@@ -1,21 +1,25 @@
 import { Button } from "@components/button";
 import { Input } from "@components/input";
+import { login } from "@redux/slices/authSlice";
 import { useRef } from "react";
-import { Dimensions, TextInput } from "react-native";
+import { TextInput } from "react-native";
+import { useDispatch } from "react-redux";
 import { Container, StyledKeyboardAvoidingView } from "./Auth.styles";
 import { Google } from "./components/google";
 import { HaventRegistered } from "./components/haventRegistered";
 import { Header } from "./components/header";
 import { Or } from "./components/or";
 
-const { height } = Dimensions.get("window");
-
 export const Auth = () => {
   const inputRef1 = useRef<TextInput>(null);
   const inputRef2 = useRef<TextInput>(null);
 
+  const dispatch = useDispatch();
+
   const handleContinue = () => {
-    console.log("handleContinue");
+    console.log("Auth handleContinue");
+
+    dispatch(login());
   };
 
   const handleForgotPassword = () => {

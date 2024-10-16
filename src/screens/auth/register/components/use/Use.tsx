@@ -3,7 +3,7 @@ import { RadioButton } from "@components/radioButton";
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "screens/auth/components/header";
 import { TermsAndPrivacy } from "screens/auth/components/termsAndPrivacy";
-import { Container, StyledKeyboardAvoidingView } from "./Use.styles";
+import { Container, Separator, StyledKeyboardAvoidingView } from "./Use.styles";
 
 export const Use = () => {
   const navigation = useNavigation();
@@ -27,9 +27,11 @@ export const Use = () => {
 
         <RadioButton
           label="Como irá usar nossa plataforma?"
-          options={["Uso pessoal", "Organização"]}
+          options={[{ value: "Uso pessoal" }, { value: "Organização" }]}
           onSelect={(selectedOption) => console.log(selectedOption)}
         />
+
+        <Separator />
 
         <Button
           title="Continuar"

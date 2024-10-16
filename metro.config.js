@@ -20,6 +20,7 @@ module.exports = (() => {
     "@colors": "./src/styles/colors",
     "@components": "./src/components",
     "@utils": "./src/utils",
+    "@redux": "./src/redux",
   };
 
   return config;

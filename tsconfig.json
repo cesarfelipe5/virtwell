@@ -12,7 +12,8 @@
       "@assets/*": ["../assets/*"],
       "@colors/*": ["styles/colors/*"],
       "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@redux/*": ["redux/*"]
     }
   },
   "exclude": [

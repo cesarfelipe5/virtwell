@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Organization } from "./components/organization";
+import { Signature } from "./components/signature";
 import { Use } from "./components/use";
 import { Register } from "./Register";
 import { RegisterStackParamList } from "./Register.tyeps";
@@ -15,6 +16,7 @@ export const RegisterNavigator = () => {
       <RegisterStack.Screen name="Register" component={Register} />
       <RegisterStack.Screen name="Use" component={Use} />
       <RegisterStack.Screen name="Organization" component={Organization} />
+      <RegisterStack.Screen name="Signature" component={Signature} />
     </RegisterStack.Navigator>
   );
 };
