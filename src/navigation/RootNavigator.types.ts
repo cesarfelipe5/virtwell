@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 // Tipos para as rotas
 export type AuthStackParamList = {
   AuthNavigator: undefined;
@@ -6,5 +8,13 @@ export type AuthStackParamList = {
 
 export type AppTabsParamList = {
   Home: undefined;
-  Profile: undefined;
+  Explore: undefined;
+  Device: undefined;
+  Settings: undefined;
 };
+
+export interface RenderTabIconProps {
+  IconComponent: FC<any>;
+  color: string;
+  focused: boolean;
+}

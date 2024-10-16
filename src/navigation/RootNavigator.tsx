@@ -1,64 +1,101 @@
+import Cast from "@assets/icons/cast.svg";
+import House from "@assets/icons/house.svg";
+import Sliders from "@assets/icons/sliders.svg";
+import Telescope from "@assets/icons/telescope.svg";
+import { Colors } from "@color/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { AuthNavigator } from "screens/auth";
+import ProfileScreen from "screens/ProfileScreen";
 import { RootState } from "../redux/store";
 import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/ProfileScreen";
 import { Onboarding } from "../screens/onboarding";
-import { AppTabsParamList, AuthStackParamList } from "./RootNavigator.types";
+import { styles } from "./RootNavigator.styles";
+import {
+  AppTabsParamList,
+  AuthStackParamList,
+  RenderTabIconProps,
+} from "./RootNavigator.types";
 
 // Navegação de autenticação (Login)
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 
-const UnauthenticatedNavigator = () => {
-  return (
-    <AuthStack.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="Onboarding"
-    >
-      <AuthStack.Screen name="Onboarding" component={Onboarding} />
-      <AuthStack.Screen name="AuthNavigator" component={AuthNavigator} />
-    </AuthStack.Navigator>
-  );
-};
+const UnauthenticatedNavigator: FC = () => (
+  <AuthStack.Navigator
+    screenOptions={{ headerShown: false }}
+    initialRouteName="Onboarding"
+  >
+    <AuthStack.Screen name="Onboarding" component={Onboarding} />
+    <AuthStack.Screen name="AuthNavigator" component={AuthNavigator} />
+  </AuthStack.Navigator>
+);
 
 // Navegação de abas (após login)
 const Tab = createBottomTabNavigator<AppTabsParamList>();
 
 const AuthenticatedNavigator = () => {
+  const renderTabIcon: FC<RenderTabIconProps> = ({
+    IconComponent,
+    color,
+    focused,
+  }) => {
+    const size = focused ? 30 : 20;
+
+    return <IconComponent width={size} height={size} stroke={color} />;
+  };
+
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={() => ({
         headerShown: false,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName: string;
-
-          if (route.name === "Home") {
-            iconName = focused
-              ? "information-circle"
-              : "information-circle-outline";
-          } else if (route.name === "Profile") {
-            iconName = focused ? "list" : "list-outline";
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: Colors.violet600,
+        tabBarinactiveTintColor: Colors.zinc500,
+        tabBarStyle: styles.tabBarStyle,
+        tabBarLabelStyle: styles.tabBarLabelStyle,
       })}
     >
       <Tab.Screen
         name="Home"
-        options={{ tabBarBadge: 3 }}
+        options={{
+          title: "Início",
+          tabBarIcon: ({ color, focused }) =>
+            renderTabIcon({ IconComponent: House, color, focused }),
+        }}
         component={HomeScreen}
       />
 
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Explore"
+        options={{
+          title: "Explorar",
+          tabBarIcon: ({ color, focused }) =>
+            renderTabIcon({ IconComponent: Telescope, color, focused }),
+        }}
+        component={ProfileScreen}
+      />
+
+      <Tab.Screen
+        name="Device"
+        options={{
+          title: "Dispositivos",
+          tabBarIcon: ({ color, focused }) =>
+            renderTabIcon({ IconComponent: Cast, color, focused }),
+        }}
+        component={HomeScreen}
+      />
+
+      <Tab.Screen
+        name="Settings"
+        options={{
+          title: "Ajustes",
+          tabBarIcon: ({ color, focused }) =>
+            renderTabIcon({ IconComponent: Sliders, color, focused }),
+        }}
+        component={ProfileScreen}
+      />
     </Tab.Navigator>
   );
 };

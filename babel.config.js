@@ -10,7 +10,7 @@ module.exports = function (api) {
           extensions: [".ts", ".tsx", ".js", ".json"],
           alias: {
             "@assets": "./assets",
-            "@colors": "./src/styles/colors",
+            "@color": "./src/color",
             "@components": "./src/components",
             "@utils": "./src/utils",
             "@redux": "./src/redux",

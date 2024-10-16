@@ -10,7 +10,7 @@
     "baseUrl": "./src",
     "paths": {
       "@assets/*": ["../assets/*"],
-      "@colors/*": ["styles/colors/*"],
+      "@color/*": ["color/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@redux/*": ["redux/*"]
